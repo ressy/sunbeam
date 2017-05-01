@@ -64,8 +64,6 @@ def _control_script(igvcommands, igv_fp, igv_prefs):
         igvscript.writelines(map(lambda x: bytes(x+'\n', 'ascii'), igvcommands))
         igvscript.flush()
         igvprefsfile = _write_prefs(igv_prefs)
-        #print("xvfb-run -s '-screen 1 1920x1080x24' %s -o %s -b %s" % (igv_fp, igvprefsfile.name, igvscript.name))
-        #time.sleep(120)
         shell("xvfb-run -s '-screen 1 1920x1080x24' %s -o %s -b %s" % (igv_fp, igvprefsfile.name, igvscript.name))
 
 def _control_socket(igvcommands, igv_fp, igv_prefs):
